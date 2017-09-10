@@ -177,7 +177,8 @@
   }
 
 
-  const pd = (p, a, b) => Math.pow(a.latest[p] - b.latest[p], 2)
+  const min360 = x => Math.min(x, Math.abs(360 - x))
+  const pd = (p, a, b) => Math.pow( min360(a.latest[p]) - min360(b.latest[p]), 2)
 
   const orientation$ = pipe(
     fromEvent(window, 'deviceorientation'),
